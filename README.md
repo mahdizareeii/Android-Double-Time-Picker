@@ -12,6 +12,9 @@
 	dependencies {
 	        implementation 'com.github.mahdizareeii:MZTimePicker:Tag'
 	}
+	
+how to use :
+
     MZTimePicker mzTimePicker = new MZTimePicker(this, new OnTimeSelectedListener() {
             @Override
             public void onTimeSelected(String fromHour, String fromMinute, String toHour, String toMinute) {
