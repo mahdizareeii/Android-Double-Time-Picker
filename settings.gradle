@@ -1,0 +1,2 @@
+include ':app', ':mztimepicker'
+rootProject.name='Time picker'
