@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.timepicker.mahdizareei.timePicker.TimePickerDialogFragment;
+import com.mahdizareei.mztimepicker.timePicker.TimePickerDialogFragment;
 
 import java.util.Objects;
 
