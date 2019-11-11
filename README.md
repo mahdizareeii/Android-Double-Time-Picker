@@ -10,7 +10,7 @@
 	}
 
 	dependencies {
-	        implementation 'com.github.mahdizareeii:MZTimePicker:Tag'
+	        implementation 'com.github.mahdizareeii:MZTimePicker:1.5'
 	}
 	
 how to use :
