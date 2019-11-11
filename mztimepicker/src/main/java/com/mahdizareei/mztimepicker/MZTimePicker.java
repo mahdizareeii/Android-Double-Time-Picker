@@ -24,8 +24,11 @@ public class MZTimePicker {
     public void showTimePicker() {
         FragmentFactory fragmentFactory = new FragmentFactory((AppCompatActivity) context);
         timePickerDialogFragment = (TimePickerDialogFragment) fragmentFactory.dialogFragmentBuild(TIME_PICKER_FRAGMENT, true);
-        timePickerDialogFragment.setOnTimeSelectedListener((fromHour, fromMinute, toHour, toMinute) -> {
-            onTimeSelectedListener.onTimeSelected(fromHour, fromMinute, toHour, toMinute);
+        timePickerDialogFragment.setOnTimeSelectedListener(new OnTimeSelectedListener() {
+            @Override
+            public void onTimeSelected(String fromHour, String fromMinute, String toHour, String toMinute) {
+                onTimeSelectedListener.onTimeSelected(fromHour, fromMinute, toHour, toMinute);
+            }
         });
     }
 

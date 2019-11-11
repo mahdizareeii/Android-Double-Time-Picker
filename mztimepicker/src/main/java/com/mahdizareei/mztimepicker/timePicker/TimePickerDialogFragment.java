@@ -70,9 +70,12 @@ public class TimePickerDialogFragment extends DialogFragment {
         adapter.addFragment(new ToTime(), to);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
-        confirm.setOnClickListener(view -> {
-            onTimeSelectedListener.onTimeSelected(FromTime.hour, FromTime.minute, ToTime.hour, ToTime.minute);
-            Objects.requireNonNull(getDialog()).dismiss();
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onTimeSelectedListener.onTimeSelected(FromTime.hour, FromTime.minute, ToTime.hour, ToTime.minute);
+                if (getDialog() != null) getDialog().dismiss();
+            }
         });
     }
 
@@ -90,18 +93,21 @@ public class TimePickerDialogFragment extends DialogFragment {
     }
 
     public void setTabFont(String fontName) {
-        ViewGroup vg = (ViewGroup) tabLayout.getChildAt(0);
-        int tabsCount = vg.getChildCount();
-        for (int j = 0; j < tabsCount; j++) {
-            ViewGroup vgTab = (ViewGroup) vg.getChildAt(j);
-            int tabChildsCount = vgTab.getChildCount();
-            for (int i = 0; i < tabChildsCount; i++) {
-                View tabViewChild = vgTab.getChildAt(i);
-                if (tabViewChild instanceof TextView) {
-                    Typeface typeface = Typeface.createFromAsset(Objects.requireNonNull(getActivity()).getAssets(), "fonts/" + fontName);
-                    ((TextView) tabViewChild).setTypeface(typeface);
+        try {
+            ViewGroup vg = (ViewGroup) tabLayout.getChildAt(0);
+            int tabsCount = vg.getChildCount();
+            for (int j = 0; j < tabsCount; j++) {
+                ViewGroup vgTab = (ViewGroup) vg.getChildAt(j);
+                int tabChildsCount = vgTab.getChildCount();
+                for (int i = 0; i < tabChildsCount; i++) {
+                    View tabViewChild = vgTab.getChildAt(i);
+                    if (tabViewChild instanceof TextView) {
+                        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/" + fontName);
+                        ((TextView) tabViewChild).setTypeface(typeface);
+                    }
                 }
             }
+        } catch (NullPointerException e) {
         }
     }
 

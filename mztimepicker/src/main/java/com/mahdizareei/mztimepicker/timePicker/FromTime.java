@@ -41,14 +41,17 @@ public class FromTime extends BaseFragment {
     }
 
     private void initAction() {
-        timePicker.setOnTimeChangedListener((timePicker, i, i1) -> {
-            hour = String.valueOf(i);
-            minute = String.valueOf(i1);
-            if (hour.length() == 1) {
-                hour = "0" + hour;
-            }
-            if (minute.length() == 1) {
-                minute = "0" + minute;
+        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker view, int i, int i1) {
+                hour = String.valueOf(i);
+                minute = String.valueOf(i1);
+                if (hour.length() == 1) {
+                    hour = "0" + hour;
+                }
+                if (minute.length() == 1) {
+                    minute = "0" + minute;
+                }
             }
         });
         timePicker.setIs24HourView(true);
