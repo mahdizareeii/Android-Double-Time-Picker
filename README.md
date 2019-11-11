@@ -1,4 +1,4 @@
-# MZTimePicker
+# MZTimePicker two timepicker for androidx
 
 [![](https://jitpack.io/v/mahdizareeii/MZTimePicker.svg)](https://jitpack.io/#mahdizareeii/MZTimePicker)
 
