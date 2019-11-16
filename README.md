@@ -2,8 +2,10 @@
 
 [![](https://jitpack.io/v/mahdizareeii/MZTimePicker.svg)](https://jitpack.io/#mahdizareeii/MZTimePicker)
 
-![alt text](https://raw.githubusercontent.com/mahdizareeii/MZTimePicker/master/app/src/main/res/drawable/sc1.png)
-![alt text](https://raw.githubusercontent.com/mahdizareeii/MZTimePicker/master/app/src/main/res/drawable/sc2.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mahdizareeii/MZTimePicker/master/app/src/main/res/drawable/sc1.png" width="250" title="hover text">
+  <img src="https://raw.githubusercontent.com/mahdizareeii/MZTimePicker/master/app/src/main/res/drawable/sc2.png" width="250" alt="accessibility text">
+</p>
 
 
 	allprojects {
