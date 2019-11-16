@@ -2,6 +2,10 @@
 
 [![](https://jitpack.io/v/mahdizareeii/MZTimePicker.svg)](https://jitpack.io/#mahdizareeii/MZTimePicker)
 
+![alt text](https://raw.githubusercontent.com/mahdizareeii/MZTimePicker/master/app/src/main/res/drawable/sc1.png)
+![alt text](https://raw.githubusercontent.com/mahdizareeii/MZTimePicker/master/app/src/main/res/drawable/sc2.png)
+
+
 	allprojects {
 		repositories {
 			...
