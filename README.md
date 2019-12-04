@@ -7,6 +7,7 @@
   <img src="https://raw.githubusercontent.com/mahdizareeii/MZTimePicker/master/app/src/main/res/drawable/2.PNG" width="250" alt="accessibility text">
 </p>
 
+how to add :
 
 	allprojects {
 		repositories {
