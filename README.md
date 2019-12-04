@@ -16,7 +16,7 @@
 	}
 
 	dependencies {
-	        implementation 'com.github.mahdizareeii:MZTimePicker:1.5'
+	        implementation 'com.github.mahdizareeii:MZTimePicker:1.7'
 	}
 	
 how to use :
