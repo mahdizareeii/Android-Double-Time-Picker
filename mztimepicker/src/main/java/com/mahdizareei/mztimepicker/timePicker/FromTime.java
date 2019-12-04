@@ -41,6 +41,8 @@ public class FromTime extends BaseFragment {
     }
 
     private void initAction() {
+        timePicker.setCurrentHour(0);
+        timePicker.setCurrentMinute(0);
         timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker view, int i, int i1) {

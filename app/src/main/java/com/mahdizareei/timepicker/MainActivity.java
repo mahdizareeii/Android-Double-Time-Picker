@@ -14,12 +14,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MZTimePicker mzTimePicker = new MZTimePicker(this, new OnTimeSelectedListener() {
-            @Override
-            public void onTimeSelected(String fromHour, String fromMinute, String toHour, String toMinute) {
-                Toast.makeText(MainActivity.this, fromHour+"", Toast.LENGTH_SHORT).show();
-            }
-        });
-        mzTimePicker.showTimePicker();
+        new MZTimePicker(this)
+                .setClearText("لغو")
+                .setConfirmText("تایید")
+                .setToTitle("از زمان")
+                .setFromTitle("تا زمان")
+                .setTabFont("myfont.ttf")
+                .BuildTimePicker(new OnTimeSelectedListener() {
+                    @Override
+                    public void onTimeSelected(String fromHour, String fromMinute, String toHour, String toMinute) {
+
+                    }
+                });
     }
 }

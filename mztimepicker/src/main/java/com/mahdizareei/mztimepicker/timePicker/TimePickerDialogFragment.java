@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,10 +28,12 @@ public class TimePickerDialogFragment extends DialogFragment {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private Button confirm;
+    private Button confirm, delete;
     private OnTimeSelectedListener onTimeSelectedListener;
-    private TimePickerPagerAdapter adapter;
-    private String from = "from", to = "to";
+    private String from;
+    private String to;
+    private String confirmTxt;
+    private String clearTxt;
 
     @NonNull
     @Override
@@ -62,19 +65,39 @@ public class TimePickerDialogFragment extends DialogFragment {
         tabLayout = view.findViewById(R.id.tabLayout);
         viewPager = view.findViewById(R.id.viewPager);
         confirm = view.findViewById(R.id.confirm);
+        delete = view.findViewById(R.id.delete);
     }
 
     private void initAction() {
-        adapter = new TimePickerPagerAdapter(getChildFragmentManager());
-        adapter.addFragment(new FromTime(), from);
-        adapter.addFragment(new ToTime(), to);
+        TimePickerPagerAdapter adapter = new TimePickerPagerAdapter(getChildFragmentManager());
+        adapter.addFragment(new FromTime(), from == null || from.isEmpty() ? "FROM" : from);
+        adapter.addFragment(new ToTime(), to == null || to.isEmpty() ? "TO" : to);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+        confirm.setText(confirmTxt == null || confirmTxt.isEmpty() ? getResources().getString(R.string.confirm) : confirmTxt);
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onTimeSelectedListener.onTimeSelected(FromTime.hour, FromTime.minute, ToTime.hour, ToTime.minute);
-                if (getDialog() != null) getDialog().dismiss();
+                if (tabLayout.getSelectedTabPosition() == 0) {
+                    viewPager.setCurrentItem(1);
+                } else {
+                    String fromHour = FromTime.hour.equals("--") ? FromTime.hour = "00" : FromTime.hour;
+                    String fromMinute = FromTime.minute.equals("--") ? FromTime.minute = "00" : FromTime.minute;
+                    String toHour = ToTime.hour.equals("--") ? ToTime.hour = "00" : ToTime.hour;
+                    String toMinute = ToTime.minute.equals("--") ? ToTime.minute = "00" : ToTime.minute;
+                    onTimeSelectedListener.onTimeSelected(fromHour, fromMinute, toHour, toMinute);
+                    Objects.requireNonNull(getDialog()).dismiss();
+                    clearItems();
+                }
+            }
+        });
+        delete.setText(clearTxt == null || clearTxt.isEmpty() ? getResources().getString(R.string.delete) : clearTxt);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onTimeSelectedListener.onTimeSelected("--", "--", "--", "--");
+                Objects.requireNonNull(getDialog()).dismiss();
+                clearItems();
             }
         });
     }
@@ -87,9 +110,16 @@ public class TimePickerDialogFragment extends DialogFragment {
         from = text;
     }
 
-
     public void setToTitle(String text) {
         to = text;
+    }
+
+    public void setConfirmText(String text) {
+        confirmTxt = text;
+    }
+
+    public void setClearText(String text) {
+        clearTxt = text;
     }
 
     public void setTabFont(String fontName) {
@@ -102,13 +132,24 @@ public class TimePickerDialogFragment extends DialogFragment {
                 for (int i = 0; i < tabChildsCount; i++) {
                     View tabViewChild = vgTab.getChildAt(i);
                     if (tabViewChild instanceof TextView) {
-                        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/" + fontName);
-                        ((TextView) tabViewChild).setTypeface(typeface);
+                        try {
+                            Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/" + fontName);
+                            ((TextView) tabViewChild).setTypeface(typeface);
+                        } catch (NullPointerException e) {
+                            Toast.makeText(getActivity(), "can not found font in assets/fonts" + fontName, Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
             }
         } catch (NullPointerException e) {
         }
+    }
+
+    private void clearItems() {
+        FromTime.hour = "--";
+        FromTime.minute = "--";
+        ToTime.hour = "--";
+        ToTime.minute = "--";
     }
 
 }

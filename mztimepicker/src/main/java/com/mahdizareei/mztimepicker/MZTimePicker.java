@@ -15,13 +15,15 @@ public class MZTimePicker {
     private Context context;
     private OnTimeSelectedListener onTimeSelectedListener;
     private TimePickerDialogFragment timePickerDialogFragment;
+    private TimePickerModel timePickerModel;
 
-    public MZTimePicker(Context context, OnTimeSelectedListener onTimeSelectedListener) {
+    public MZTimePicker(Context context) {
         this.context = context;
-        this.onTimeSelectedListener = onTimeSelectedListener;
+        timePickerModel = new TimePickerModel();
     }
 
-    public void showTimePicker() {
+    public MZTimePicker BuildTimePicker(OnTimeSelectedListener onTimeSelected) {
+        this.onTimeSelectedListener = onTimeSelected;
         FragmentFactory fragmentFactory = new FragmentFactory((AppCompatActivity) context);
         timePickerDialogFragment = (TimePickerDialogFragment) fragmentFactory.dialogFragmentBuild(TIME_PICKER_FRAGMENT, true);
         timePickerDialogFragment.setOnTimeSelectedListener(new OnTimeSelectedListener() {
@@ -30,19 +32,38 @@ public class MZTimePicker {
                 onTimeSelectedListener.onTimeSelected(fromHour, fromMinute, toHour, toMinute);
             }
         });
+        timePickerDialogFragment.setFromTitle(timePickerModel.getFromTitle());
+        timePickerDialogFragment.setToTitle(timePickerModel.getToTitle());
+        timePickerDialogFragment.setConfirmText(timePickerModel.getConfirmText());
+        timePickerDialogFragment.setClearText(timePickerModel.getClearText());
+        timePickerDialogFragment.setTabFont(timePickerModel.getFont());
+
+        return this;
     }
 
-    public void setFromTitle(String text) {
-        timePickerDialogFragment.setFromTitle(text);
+    public MZTimePicker setFromTitle(String text) {
+        this.timePickerModel.setFromTitle(text);
+        return this;
     }
 
-
-    public void setToTitle(String text) {
-        timePickerDialogFragment.setToTitle(text);
+    public MZTimePicker setToTitle(String text) {
+        this.timePickerModel.setToTitle(text);
+        return this;
     }
 
-    public void setTabFont(String fontName) {
-        timePickerDialogFragment.setTabFont(fontName);
+    public MZTimePicker setTabFont(String fontName) {
+        this.timePickerModel.setSetFont(fontName);
+        return this;
+    }
+
+    public MZTimePicker setConfirmText(String text) {
+        this.timePickerModel.setConfirmText(text);
+        return this;
+    }
+
+    public MZTimePicker setClearText(String text) {
+        this.timePickerModel.setClearText(text);
+        return this;
     }
 
 }

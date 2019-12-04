@@ -2,68 +2,64 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="350dp"
+    android:layout_height="500dp"
+    android:layout_gravity="center"
     android:gravity="center"
     android:layoutDirection="ltr"
     android:orientation="vertical"
+    android:weightSum="10"
     tools:targetApi="jelly_bean_mr1">
 
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="350dp"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="@color/color_button_x2"
+        android:gravity="center"
+        app:tabTextColor="@color/white_x1" />
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="350dp"
+        android:layout_height="380dp"
+        android:layout_gravity="center"
+        android:layout_weight="8" />
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_width="350dp"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1">
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_weight="0.5"
+            android:background="@color/color_button_x2"
+            android:padding="8dp"
+            android:text="@string/delete"
+            android:textColor="@color/white_x1"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/color_button_x2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tabTextColor="@color/white_x1" />
+        <Button
+            android:id="@+id/confirm"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_weight="0.5"
+            android:background="@color/color_button_x2"
+            android:padding="8dp"
+            android:text="@string/confirm"
+            android:textColor="@color/white_x1"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.8">
-
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/viewPager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toTopOf="@+id/confirm"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1">
-
-            <Button
-                android:id="@+id/confirm"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/color_button_x2"
-                android:text="@string/confirm"
-                android:textColor="@color/white_x1"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-        </LinearLayout>
 
     </LinearLayout>
+
+
 </LinearLayout>
