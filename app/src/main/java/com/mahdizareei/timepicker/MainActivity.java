@@ -23,16 +23,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new MZTimePicker(MainActivity.this)
-                        .setDeleteTimeText("لغو")
-                        .setConfirmTimeText("تایید")
-                        .setToTitle("از زمان")
-                        .setFromTitle("تا زمان")
+                        .setFromTitle("From")
+                        .setToTitle("To")
+                        .setDeleteTimeText("Clear")
+                        .setConfirmTimeText("Confirm")
                         .setTabFont("myfont.ttf")
                         .setTabColor(getResources().getColor(R.color.colorPrimary))
-                        .setConfirmButtonColor(getResources().getColor(R.color.colorAccent))
-                        .setDeleteButtonColor(getResources().getColor(R.color.colorAccent))
-                        .setConfirmTextColor(getResources().getColor(R.color.color_button_x4))
-                        .setDeleteTextColor(getResources().getColor(R.color.color_button_x4))
+                        .setConfirmButtonColor(getResources().getColor(R.color.color1))
+                        .setDeleteButtonColor(getResources().getColor(R.color.color1))
+                        .setConfirmTextColor(getResources().getColor(R.color.color2))
+                        .setDeleteTextColor(getResources().getColor(R.color.color2))
                         .BuildTimePicker(new OnTimeSelectedListener() {
                             @Override
                             public void onTimeSelected(TimeModel time1, TimeModel time2) {

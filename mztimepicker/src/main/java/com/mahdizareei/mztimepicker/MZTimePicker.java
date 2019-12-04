@@ -38,6 +38,7 @@ public class MZTimePicker {
                 onTimeSelectedListener.onTimeSelected(time1, time2);
             }
         });
+
         return this;
     }
 
