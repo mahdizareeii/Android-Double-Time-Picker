@@ -10,8 +10,9 @@
 
 	allprojects {
 		repositories {
-			...
-			maven { url 'https://jitpack.io' }
+			 google()
+        	         jcenter()
+                         maven { url 'https://jitpack.io' }
 		}
 	}
 
