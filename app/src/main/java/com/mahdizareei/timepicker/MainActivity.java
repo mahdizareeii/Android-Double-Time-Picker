@@ -3,7 +3,6 @@ package com.mahdizareei.timepicker;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.mahdizareei.mztimepicker.MZTimePicker;
 import com.mahdizareei.mztimepicker.interfaces.OnTimeSelectedListener;
@@ -15,8 +14,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         new MZTimePicker(this)
-                .setClearText("لغو")
-                .setConfirmText("تایید")
+                .setDeleteTimeText("لغو")
+                .setConfirmTimeText("تایید")
                 .setToTitle("از زمان")
                 .setFromTitle("تا زمان")
                 .setTabFont("myfont.ttf")

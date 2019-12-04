@@ -35,7 +35,7 @@ public class MZTimePicker {
         timePickerDialogFragment.setFromTitle(timePickerModel.getFromTitle());
         timePickerDialogFragment.setToTitle(timePickerModel.getToTitle());
         timePickerDialogFragment.setConfirmText(timePickerModel.getConfirmText());
-        timePickerDialogFragment.setClearText(timePickerModel.getClearText());
+        timePickerDialogFragment.setClearText(timePickerModel.getDeleteText());
         timePickerDialogFragment.setTabFont(timePickerModel.getFont());
 
         return this;
@@ -52,17 +52,17 @@ public class MZTimePicker {
     }
 
     public MZTimePicker setTabFont(String fontName) {
-        this.timePickerModel.setSetFont(fontName);
+        this.timePickerModel.setFont(fontName);
         return this;
     }
 
-    public MZTimePicker setConfirmText(String text) {
+    public MZTimePicker setConfirmTimeText(String text) {
         this.timePickerModel.setConfirmText(text);
         return this;
     }
 
-    public MZTimePicker setClearText(String text) {
-        this.timePickerModel.setClearText(text);
+    public MZTimePicker setDeleteTimeText(String text) {
+        this.timePickerModel.setDeleteText(text);
         return this;
     }
 

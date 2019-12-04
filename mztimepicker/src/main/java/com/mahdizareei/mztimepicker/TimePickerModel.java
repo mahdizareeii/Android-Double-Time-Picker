@@ -5,7 +5,7 @@ public class TimePickerModel {
     private String fromTitle;
     private String toTitle;
     private String confirmText;
-    private String clearText;
+    private String deleteText;
     private String setFont;
 
     public String getFromTitle() {
@@ -32,19 +32,19 @@ public class TimePickerModel {
         this.confirmText = confirmText;
     }
 
-    public String getClearText() {
-        return clearText;
+    public String getDeleteText() {
+        return deleteText;
     }
 
-    public void setClearText(String clearText) {
-        this.clearText = clearText;
+    public void setDeleteText(String deleteText) {
+        this.deleteText = deleteText;
     }
 
     public String getFont() {
         return setFont;
     }
 
-    public void setSetFont(String fontName) {
-        this.setFont = setFont;
+    public void setFont(String fontName) {
+        this.setFont = fontName;
     }
 }

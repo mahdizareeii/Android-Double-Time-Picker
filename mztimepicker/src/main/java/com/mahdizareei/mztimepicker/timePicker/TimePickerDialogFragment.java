@@ -34,6 +34,7 @@ public class TimePickerDialogFragment extends DialogFragment {
     private String to;
     private String confirmTxt;
     private String clearTxt;
+    private String fontName;
 
     @NonNull
     @Override
@@ -100,6 +101,7 @@ public class TimePickerDialogFragment extends DialogFragment {
                 clearItems();
             }
         });
+        changeTabsFont(fontName, tabLayout, confirm, delete);
     }
 
     public void setOnTimeSelectedListener(OnTimeSelectedListener onTimeSelectedListener) {
@@ -107,23 +109,35 @@ public class TimePickerDialogFragment extends DialogFragment {
     }
 
     public void setFromTitle(String text) {
-        from = text;
+        this.from = text;
     }
 
     public void setToTitle(String text) {
-        to = text;
+        this.to = text;
     }
 
     public void setConfirmText(String text) {
-        confirmTxt = text;
+        this.confirmTxt = text;
     }
 
     public void setClearText(String text) {
-        clearTxt = text;
+        this.clearTxt = text;
     }
 
     public void setTabFont(String fontName) {
-        try {
+        this.fontName = fontName;
+    }
+
+    private void clearItems() {
+        FromTime.hour = "--";
+        FromTime.minute = "--";
+        ToTime.hour = "--";
+        ToTime.minute = "--";
+    }
+
+    private void changeTabsFont(String fontName, TabLayout tabLayout, Button confirmButton, Button deleteButton) {
+        if (fontName != null && !fontName.isEmpty()) {
+            fontName = !fontName.contains(".ttf") ? fontName + ".ttf" : fontName;
             ViewGroup vg = (ViewGroup) tabLayout.getChildAt(0);
             int tabsCount = vg.getChildCount();
             for (int j = 0; j < tabsCount; j++) {
@@ -132,24 +146,22 @@ public class TimePickerDialogFragment extends DialogFragment {
                 for (int i = 0; i < tabChildsCount; i++) {
                     View tabViewChild = vgTab.getChildAt(i);
                     if (tabViewChild instanceof TextView) {
-                        try {
-                            Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/" + fontName);
-                            ((TextView) tabViewChild).setTypeface(typeface);
-                        } catch (NullPointerException e) {
-                            Toast.makeText(getActivity(), "can not found font in assets/fonts" + fontName, Toast.LENGTH_SHORT).show();
-                        }
+                        setTypeFace(((TextView) tabViewChild), fontName);
                     }
                 }
             }
-        } catch (NullPointerException e) {
+            setTypeFace(confirmButton, fontName);
+            setTypeFace(deleteButton, fontName);
         }
     }
 
-    private void clearItems() {
-        FromTime.hour = "--";
-        FromTime.minute = "--";
-        ToTime.hour = "--";
-        ToTime.minute = "--";
+    private void setTypeFace(TextView textView, String fontName) {
+        try {
+            Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/" + fontName);
+            textView.setTypeface(typeface);
+        } catch (NullPointerException e) {
+            Toast.makeText(getActivity(), "can not find the assets/fonts/" + fontName, Toast.LENGTH_SHORT).show();
+        }
     }
 
 }
