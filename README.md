@@ -3,8 +3,8 @@
 [![](https://jitpack.io/v/mahdizareeii/MZTimePicker.svg)](https://jitpack.io/#mahdizareeii/MZTimePicker)
 
 <p align="left">
-  <img src="https://raw.githubusercontent.com/mahdizareeii/MZTimePicker/master/app/src/main/res/drawable/sc1.png" width="250" title="hover text">
-  <img src="https://raw.githubusercontent.com/mahdizareeii/MZTimePicker/master/app/src/main/res/drawable/sc2.png" width="250" alt="accessibility text">
+  <img src="https://raw.githubusercontent.com/mahdizareeii/MZTimePicker/master/app/src/main/res/drawable/1.png" width="250" title="hover text">
+  <img src="https://raw.githubusercontent.com/mahdizareeii/MZTimePicker/master/app/src/main/res/drawable/2.png" width="250" alt="accessibility text">
 </p>
 
 
