@@ -26,6 +26,7 @@ public class MZTimePicker {
 
     public MZTimePicker BuildTimePicker(OnTimeSelectedListener onTimeSelected) {
         this.onTimeSelectedListener = onTimeSelected;
+
         FragmentFactory fragmentFactory = new FragmentFactory((AppCompatActivity) context);
         timePickerDialogFragment = (TimePickerDialogFragment) fragmentFactory.dialogFragmentBuild(TIME_PICKER_FRAGMENT, true);
         timePickerDialogFragment.setOnTimeSelectedListener(new OnTimeSelectedListener() {
@@ -34,12 +35,12 @@ public class MZTimePicker {
                 onTimeSelectedListener.onTimeSelected(time1, time2);
             }
         });
+
         timePickerDialogFragment.setFromTitle(timePickerModel.getFromTitle());
         timePickerDialogFragment.setToTitle(timePickerModel.getToTitle());
         timePickerDialogFragment.setConfirmText(timePickerModel.getConfirmText());
         timePickerDialogFragment.setClearText(timePickerModel.getDeleteText());
         timePickerDialogFragment.setTabFont(timePickerModel.getFont());
-
         return this;
     }
 
@@ -53,11 +54,6 @@ public class MZTimePicker {
         return this;
     }
 
-    public MZTimePicker setTabFont(String fontName) {
-        this.timePickerModel.setFont(fontName);
-        return this;
-    }
-
     public MZTimePicker setConfirmTimeText(String text) {
         this.timePickerModel.setConfirmText(text);
         return this;
@@ -68,4 +64,8 @@ public class MZTimePicker {
         return this;
     }
 
+    public MZTimePicker setTabFont(String fontName) {
+        this.timePickerModel.setFont(fontName);
+        return this;
+    }
 }
