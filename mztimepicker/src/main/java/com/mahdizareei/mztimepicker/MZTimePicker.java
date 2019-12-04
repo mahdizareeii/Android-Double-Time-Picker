@@ -1,6 +1,7 @@
 package com.mahdizareei.mztimepicker;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +18,7 @@ public class MZTimePicker {
     private Context context;
     private OnTimeSelectedListener onTimeSelectedListener;
     private TimePickerDialogFragment timePickerDialogFragment;
-    private TimePickerModel timePickerModel;
+    public static TimePickerModel timePickerModel;
 
     public MZTimePicker(Context context) {
         this.context = context;
@@ -35,37 +36,51 @@ public class MZTimePicker {
                 onTimeSelectedListener.onTimeSelected(time1, time2);
             }
         });
-
-        timePickerDialogFragment.setFromTitle(timePickerModel.getFromTitle());
-        timePickerDialogFragment.setToTitle(timePickerModel.getToTitle());
-        timePickerDialogFragment.setConfirmText(timePickerModel.getConfirmText());
-        timePickerDialogFragment.setClearText(timePickerModel.getDeleteText());
-        timePickerDialogFragment.setTabFont(timePickerModel.getFont());
         return this;
     }
 
     public MZTimePicker setFromTitle(String text) {
-        this.timePickerModel.setFromTitle(text);
+        timePickerModel.setFromTitle(text);
         return this;
     }
 
     public MZTimePicker setToTitle(String text) {
-        this.timePickerModel.setToTitle(text);
+        timePickerModel.setToTitle(text);
         return this;
     }
 
     public MZTimePicker setConfirmTimeText(String text) {
-        this.timePickerModel.setConfirmText(text);
+        timePickerModel.setConfirmText(text);
         return this;
     }
 
     public MZTimePicker setDeleteTimeText(String text) {
-        this.timePickerModel.setDeleteText(text);
+        timePickerModel.setDeleteText(text);
         return this;
     }
 
     public MZTimePicker setTabFont(String fontName) {
-        this.timePickerModel.setFont(fontName);
+        timePickerModel.setFont(fontName);
+        return this;
+    }
+
+    public MZTimePicker setTabColor(int color) {
+        timePickerModel.setTabColor(color);
+        return this;
+    }
+
+    public MZTimePicker setTabDrawable(Drawable drawable) {
+        timePickerModel.setTabDrawable(drawable);
+        return this;
+    }
+
+    public MZTimePicker setConfirmButtonColor(int color) {
+        timePickerModel.setBtnConfirmColor(color);
+        return this;
+    }
+
+    public MZTimePicker setDeleteButtonColor(int color) {
+        timePickerModel.setBtnDeleteColor(color);
         return this;
     }
 }

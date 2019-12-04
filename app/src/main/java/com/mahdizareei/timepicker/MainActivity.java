@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
                         .setToTitle("از زمان")
                         .setFromTitle("تا زمان")
                         .setTabFont("myfont.ttf")
+                        .setTabColor(R.color.colorPrimary)
+                        .setConfirmButtonColor(R.color.colorPrimaryDark)
+                        .setDeleteButtonColor(R.color.colorPrimaryDark)
                         .BuildTimePicker(new OnTimeSelectedListener() {
                             @Override
                             public void onTimeSelected(TimeModel time1, TimeModel time2) {

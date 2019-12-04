@@ -2,6 +2,7 @@ package com.mahdizareei.mztimepicker.timePicker;
 
 import android.app.Dialog;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,17 +26,14 @@ import com.mahdizareei.mztimepicker.models.TimeModel;
 
 import java.util.Objects;
 
+import static com.mahdizareei.mztimepicker.MZTimePicker.timePickerModel;
+
 public class TimePickerDialogFragment extends DialogFragment {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private Button confirm, delete;
     private OnTimeSelectedListener onTimeSelectedListener;
-    private String from;
-    private String to;
-    private String confirmTxt;
-    private String clearTxt;
-    private String fontName;
 
     @NonNull
     @Override
@@ -72,11 +70,10 @@ public class TimePickerDialogFragment extends DialogFragment {
 
     private void initAction() {
         TimePickerPagerAdapter adapter = new TimePickerPagerAdapter(getChildFragmentManager());
-        adapter.addFragment(new FromTime(), from == null || from.isEmpty() ? "FROM" : from);
-        adapter.addFragment(new ToTime(), to == null || to.isEmpty() ? "TO" : to);
+        adapter.addFragment(new FromTime(), timePickerModel.getFromTitle() == null || timePickerModel.getFromTitle().isEmpty() ? "FROM" : timePickerModel.getFromTitle());
+        adapter.addFragment(new ToTime(), timePickerModel.getToTitle() == null || timePickerModel.getToTitle().isEmpty() ? "TO" : timePickerModel.getToTitle());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
-        confirm.setText(confirmTxt == null || confirmTxt.isEmpty() ? getResources().getString(R.string.confirm) : confirmTxt);
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,7 +90,6 @@ public class TimePickerDialogFragment extends DialogFragment {
                 }
             }
         });
-        delete.setText(clearTxt == null || clearTxt.isEmpty() ? getResources().getString(R.string.delete) : clearTxt);
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,31 +98,29 @@ public class TimePickerDialogFragment extends DialogFragment {
                 clearItems();
             }
         });
-        changeTabsFont(fontName, tabLayout, confirm, delete);
+        customizeObjects();
     }
 
     public void setOnTimeSelectedListener(OnTimeSelectedListener onTimeSelectedListener) {
         this.onTimeSelectedListener = onTimeSelectedListener;
     }
 
-    public void setFromTitle(String text) {
-        this.from = text;
-    }
-
-    public void setToTitle(String text) {
-        this.to = text;
-    }
-
-    public void setConfirmText(String text) {
-        this.confirmTxt = text;
-    }
-
-    public void setClearText(String text) {
-        this.clearTxt = text;
-    }
-
-    public void setTabFont(String fontName) {
-        this.fontName = fontName;
+    private void customizeObjects() {
+        if (timePickerModel.getTabDrawable() != null)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+                tabLayout.setBackground(timePickerModel.getTabDrawable());
+        if (timePickerModel.getTabColor() != null)
+            tabLayout.setBackgroundColor(timePickerModel.getTabColor());
+        if (timePickerModel.getBtnConfirmColor() != null)
+            confirm.setBackgroundColor(timePickerModel.getBtnConfirmColor());
+        if (timePickerModel.getBtnDeleteColor() != null)
+            delete.setBackgroundColor(timePickerModel.getBtnDeleteColor());
+        if (timePickerModel.getConfirmText() != null)
+            confirm.setText(timePickerModel.getConfirmText());
+        if (timePickerModel.getDeleteText() != null)
+            delete.setText(timePickerModel.getDeleteText());
+        if (timePickerModel.getFont() != null)
+            changeTabsFont(timePickerModel.getFont(), tabLayout, confirm, delete);
     }
 
     private void clearItems() {
@@ -137,23 +131,21 @@ public class TimePickerDialogFragment extends DialogFragment {
     }
 
     private void changeTabsFont(String fontName, TabLayout tabLayout, Button confirmButton, Button deleteButton) {
-        if (fontName != null && !fontName.isEmpty()) {
-            fontName = !fontName.contains(".ttf") ? fontName + ".ttf" : fontName;
-            ViewGroup vg = (ViewGroup) tabLayout.getChildAt(0);
-            int tabsCount = vg.getChildCount();
-            for (int j = 0; j < tabsCount; j++) {
-                ViewGroup vgTab = (ViewGroup) vg.getChildAt(j);
-                int tabChildsCount = vgTab.getChildCount();
-                for (int i = 0; i < tabChildsCount; i++) {
-                    View tabViewChild = vgTab.getChildAt(i);
-                    if (tabViewChild instanceof TextView) {
-                        setTypeFace(((TextView) tabViewChild), fontName);
-                    }
+        fontName = !fontName.contains(".ttf") ? fontName + ".ttf" : fontName;
+        ViewGroup vg = (ViewGroup) tabLayout.getChildAt(0);
+        int tabsCount = vg.getChildCount();
+        for (int j = 0; j < tabsCount; j++) {
+            ViewGroup vgTab = (ViewGroup) vg.getChildAt(j);
+            int tabChildsCount = vgTab.getChildCount();
+            for (int i = 0; i < tabChildsCount; i++) {
+                View tabViewChild = vgTab.getChildAt(i);
+                if (tabViewChild instanceof TextView) {
+                    setTypeFace(((TextView) tabViewChild), fontName);
                 }
             }
-            setTypeFace(confirmButton, fontName);
-            setTypeFace(deleteButton, fontName);
         }
+        setTypeFace(confirmButton, fontName);
+        setTypeFace(deleteButton, fontName);
     }
 
     private void setTypeFace(TextView textView, String fontName) {
