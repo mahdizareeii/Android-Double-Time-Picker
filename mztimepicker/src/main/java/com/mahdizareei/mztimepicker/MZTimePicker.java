@@ -3,6 +3,8 @@ package com.mahdizareei.mztimepicker;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mahdizareei.mztimepicker.interfaces.OnTimeSelectedListener;
@@ -64,23 +66,33 @@ public class MZTimePicker {
         return this;
     }
 
-    public MZTimePicker setTabColor(int color) {
-        timePickerModel.setTabColor(color);
-        return this;
-    }
-
     public MZTimePicker setTabDrawable(Drawable drawable) {
         timePickerModel.setTabDrawable(drawable);
         return this;
     }
 
-    public MZTimePicker setConfirmButtonColor(int color) {
+    public MZTimePicker setTabColor(@ColorInt int color) {
+        timePickerModel.setTabColor(color);
+        return this;
+    }
+
+    public MZTimePicker setConfirmButtonColor(@ColorInt int color) {
         timePickerModel.setBtnConfirmColor(color);
         return this;
     }
 
-    public MZTimePicker setDeleteButtonColor(int color) {
+    public MZTimePicker setDeleteButtonColor(@ColorInt int color) {
         timePickerModel.setBtnDeleteColor(color);
+        return this;
+    }
+
+    public MZTimePicker setConfirmTextColor(@ColorInt int color) {
+        timePickerModel.setTxtConfirmColor(color);
+        return this;
+    }
+
+    public MZTimePicker setDeleteTextColor(@ColorInt int color) {
+        timePickerModel.setTxtDeleteColor(color);
         return this;
     }
 }

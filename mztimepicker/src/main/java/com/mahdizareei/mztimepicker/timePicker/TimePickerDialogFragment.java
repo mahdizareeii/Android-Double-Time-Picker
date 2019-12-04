@@ -109,16 +109,28 @@ public class TimePickerDialogFragment extends DialogFragment {
         if (timePickerModel.getTabDrawable() != null)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                 tabLayout.setBackground(timePickerModel.getTabDrawable());
+
         if (timePickerModel.getTabColor() != null)
             tabLayout.setBackgroundColor(timePickerModel.getTabColor());
+
         if (timePickerModel.getBtnConfirmColor() != null)
             confirm.setBackgroundColor(timePickerModel.getBtnConfirmColor());
+
         if (timePickerModel.getBtnDeleteColor() != null)
             delete.setBackgroundColor(timePickerModel.getBtnDeleteColor());
+
+        if (timePickerModel.getTxtConfirmColor() != null)
+            confirm.setTextColor(timePickerModel.getTxtConfirmColor());
+
+        if (timePickerModel.getTxtDeleteColor() != null)
+            delete.setTextColor(timePickerModel.getTxtDeleteColor());
+
         if (timePickerModel.getConfirmText() != null)
             confirm.setText(timePickerModel.getConfirmText());
+
         if (timePickerModel.getDeleteText() != null)
             delete.setText(timePickerModel.getDeleteText());
+
         if (timePickerModel.getFont() != null)
             changeTabsFont(timePickerModel.getFont(), tabLayout, confirm, delete);
     }

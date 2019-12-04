@@ -8,11 +8,13 @@ public class TimePickerModel {
     private String toTitle;
     private String confirmText;
     private String deleteText;
-    private String setFont;
+    private String Font;
     private Drawable tabDrawable;
     private Integer tabColor;
     private Integer btnConfirmColor;
     private Integer btnDeleteColor;
+    private Integer txtConfirmColor;
+    private Integer txtDeleteColor;
 
     public String getFromTitle() {
         return fromTitle;
@@ -47,11 +49,11 @@ public class TimePickerModel {
     }
 
     public String getFont() {
-        return setFont;
+        return Font;
     }
 
-    public void setFont(String setFont) {
-        this.setFont = setFont;
+    public void setFont(String Font) {
+        this.Font = Font;
     }
 
     public Drawable getTabDrawable() {
@@ -66,7 +68,7 @@ public class TimePickerModel {
         return tabColor;
     }
 
-    public void setTabColor(int tabColor) {
+    public void setTabColor(Integer tabColor) {
         this.tabColor = tabColor;
     }
 
@@ -74,7 +76,7 @@ public class TimePickerModel {
         return btnConfirmColor;
     }
 
-    public void setBtnConfirmColor(int btnConfirmColor) {
+    public void setBtnConfirmColor(Integer btnConfirmColor) {
         this.btnConfirmColor = btnConfirmColor;
     }
 
@@ -82,7 +84,23 @@ public class TimePickerModel {
         return btnDeleteColor;
     }
 
-    public void setBtnDeleteColor(int btnDeleteColor) {
+    public void setBtnDeleteColor(Integer btnDeleteColor) {
         this.btnDeleteColor = btnDeleteColor;
+    }
+
+    public Integer getTxtConfirmColor() {
+        return txtConfirmColor;
+    }
+
+    public void setTxtConfirmColor(Integer txtConfirmColor) {
+        this.txtConfirmColor = txtConfirmColor;
+    }
+
+    public Integer getTxtDeleteColor() {
+        return txtDeleteColor;
+    }
+
+    public void setTxtDeleteColor(Integer txtDeleteColor) {
+        this.txtDeleteColor = txtDeleteColor;
     }
 }
