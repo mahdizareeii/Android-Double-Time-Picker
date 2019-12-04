@@ -3,8 +3,8 @@
 [![](https://jitpack.io/v/mahdizareeii/MZTimePicker.svg)](https://jitpack.io/#mahdizareeii/MZTimePicker)
 
 <p align="left">
-  <img src="https://raw.githubusercontent.com/mahdizareeii/MZTimePicker/master/app/src/main/res/drawable/1.png" width="250" title="hover text">
-  <img src="https://raw.githubusercontent.com/mahdizareeii/MZTimePicker/master/app/src/main/res/drawable/2.png" width="250" alt="accessibility text">
+  <img src="https://raw.githubusercontent.com/mahdizareeii/MZTimePicker/master/app/src/main/res/drawable/1.PNG" width="250" title="hover text">
+  <img src="https://raw.githubusercontent.com/mahdizareeii/MZTimePicker/master/app/src/main/res/drawable/2.PNG" width="250" alt="accessibility text">
 </p>
 
 
@@ -16,7 +16,7 @@
 	}
 
 	dependencies {
-	        implementation 'com.github.mahdizareeii:MZTimePicker:1.7'
+	        implementation 'com.github.mahdizareeii:MZTimePicker:1.8'
 	}
 	
 how to use :
