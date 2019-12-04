@@ -21,11 +21,9 @@
 	
 how to use :
 
-    MZTimePicker mzTimePicker = new MZTimePicker(this, new OnTimeSelectedListener() {
-            @Override
-            public void onTimeSelected(String fromHour, String fromMinute, String toHour, String toMinute) {
-                Toast.makeText(MainActivity.this, fromHour + ":" + fromMinute + "  -  " + toHour + ":" + toMinute, Toast.LENGTH_SHORT).show();
-            }
-        });
-	
-    mzTimePicker.showTimePicker();
+    new MZTimePicker(MainActivity.this).BuildTimePicker(new OnTimeSelectedListener() {
+                    @Override
+                    public void onTimeSelected(TimeModel time1, TimeModel time2) {
+                        textView.setText(String.format("%s:%s | %s:%s", time1.getHour(), time1.getMinute(), time2.getHour(), time2.getMinute()));
+                    }
+                });
