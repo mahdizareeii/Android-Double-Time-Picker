@@ -27,3 +27,23 @@ how to use :
                         textView.setText(String.format("%s:%s | %s:%s", time1.getHour(), time1.getMinute(), time2.getHour(), time2.getMinute()));
                     }
                 });
+		
+more settings :
+
+    new MZTimePicker(MainActivity.this)
+                        .setFromTitle("From") //set title
+                        .setToTitle("To") //set title
+                        .setDeleteTimeText("Clear") //set text
+                        .setConfirmTimeText("Confirm") //set text
+                        .setTabFont("myfont.ttf") //set font (assets/fonts/myfont.ttf)
+                        .setTabColor(getResources().getColor(R.color.colorPrimary)) //set color
+                        .setConfirmButtonColor(getResources().getColor(R.color.color1)) //set color
+                        .setDeleteButtonColor(getResources().getColor(R.color.color1)) //set color
+                        .setConfirmTextColor(getResources().getColor(R.color.color2)) //set color
+                        .setDeleteTextColor(getResources().getColor(R.color.color2)) //set color
+                        .BuildTimePicker(new OnTimeSelectedListener() {
+                            @Override
+                            public void onTimeSelected(TimeModel time1, TimeModel time2) {
+                                textView.setText(String.format("%s:%s | %s:%s", time1.getHour(), time1.getMinute(), time2.getHour(), time2.getMinute()));
+                            }
+                        });
