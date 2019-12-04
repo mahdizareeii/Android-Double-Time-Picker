@@ -21,6 +21,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.mahdizareei.mztimepicker.R;
 import com.mahdizareei.mztimepicker.adapter.TimePickerPagerAdapter;
 import com.mahdizareei.mztimepicker.interfaces.OnTimeSelectedListener;
+import com.mahdizareei.mztimepicker.models.TimeModel;
 
 import java.util.Objects;
 
@@ -86,7 +87,7 @@ public class TimePickerDialogFragment extends DialogFragment {
                     String fromMinute = FromTime.minute.equals("--") ? FromTime.minute = "00" : FromTime.minute;
                     String toHour = ToTime.hour.equals("--") ? ToTime.hour = "00" : ToTime.hour;
                     String toMinute = ToTime.minute.equals("--") ? ToTime.minute = "00" : ToTime.minute;
-                    onTimeSelectedListener.onTimeSelected(fromHour, fromMinute, toHour, toMinute);
+                    onTimeSelectedListener.onTimeSelected(new TimeModel(fromHour, fromMinute), new TimeModel(toHour, toMinute));
                     Objects.requireNonNull(getDialog()).dismiss();
                     clearItems();
                 }
@@ -96,7 +97,7 @@ public class TimePickerDialogFragment extends DialogFragment {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onTimeSelectedListener.onTimeSelected("--", "--", "--", "--");
+                onTimeSelectedListener.onTimeSelected(new TimeModel("", ""), new TimeModel("", ""));
                 Objects.requireNonNull(getDialog()).dismiss();
                 clearItems();
             }

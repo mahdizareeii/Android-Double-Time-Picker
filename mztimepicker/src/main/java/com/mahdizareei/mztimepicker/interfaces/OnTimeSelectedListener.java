@@ -1,6 +1,8 @@
 package com.mahdizareei.mztimepicker.interfaces;
 
 
+import com.mahdizareei.mztimepicker.models.TimeModel;
+
 public interface OnTimeSelectedListener {
-    void onTimeSelected(String fromHour, String fromMinute, String toHour, String toMinute);
+    void onTimeSelected(TimeModel time1, TimeModel time2);
 }

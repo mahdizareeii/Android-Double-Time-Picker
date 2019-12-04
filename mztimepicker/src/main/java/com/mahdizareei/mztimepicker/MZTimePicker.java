@@ -5,6 +5,8 @@ import android.content.Context;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mahdizareei.mztimepicker.interfaces.OnTimeSelectedListener;
+import com.mahdizareei.mztimepicker.models.TimeModel;
+import com.mahdizareei.mztimepicker.models.TimePickerModel;
 import com.mahdizareei.mztimepicker.timePicker.TimePickerDialogFragment;
 import com.mahdizareei.mztimepicker.utils.FragmentFactory;
 
@@ -28,8 +30,8 @@ public class MZTimePicker {
         timePickerDialogFragment = (TimePickerDialogFragment) fragmentFactory.dialogFragmentBuild(TIME_PICKER_FRAGMENT, true);
         timePickerDialogFragment.setOnTimeSelectedListener(new OnTimeSelectedListener() {
             @Override
-            public void onTimeSelected(String fromHour, String fromMinute, String toHour, String toMinute) {
-                onTimeSelectedListener.onTimeSelected(fromHour, fromMinute, toHour, toMinute);
+            public void onTimeSelected(TimeModel time1, TimeModel time2) {
+                onTimeSelectedListener.onTimeSelected(time1, time2);
             }
         });
         timePickerDialogFragment.setFromTitle(timePickerModel.getFromTitle());

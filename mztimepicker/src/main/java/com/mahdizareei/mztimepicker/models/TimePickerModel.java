@@ -1,4 +1,4 @@
-package com.mahdizareei.mztimepicker;
+package com.mahdizareei.mztimepicker.models;
 
 public class TimePickerModel {
 
