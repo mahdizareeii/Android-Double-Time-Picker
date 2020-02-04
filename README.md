@@ -7,7 +7,7 @@
   <img src="https://raw.githubusercontent.com/mahdizareeii/MZTimePicker/master/app/src/main/res/drawable/2.PNG" width="250" alt="accessibility text">
 </p>
 
-how to add :
+step 1: add the following codes in 'build.gradle(Project: yourproject)'
 
 	allprojects {
 		repositories {
@@ -16,12 +16,13 @@ how to add :
                      maven { url 'https://jitpack.io' }
 		}
 	}
+step 2: add the following codes in 'build.gradle(Madule: app)'
 
 	dependencies {
 	        implementation 'com.github.mahdizareeii:MZTimePicker:1.8'
 	}
 	
-how to use :
+step 3: how to use
 
     new MZTimePicker(MainActivity.this).BuildTimePicker(new OnTimeSelectedListener() {
                     @Override
