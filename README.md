@@ -1,6 +1,6 @@
 # MZTimePicker (double time picker) for androidx
 
-[![](https://jitpack.io/v/mahdizareeii/MZTimePicker.svg)](https://jitpack.io/#mahdizareeii/MZTimePicker)
+[![](https://jitpack.io/v/mahdizareeii/Android-Double-Time-Picker.svg)](https://jitpack.io/#mahdizareeii/Android-Double-Time-Picker)
 
 <p align="left">
   <img src="https://raw.githubusercontent.com/mahdizareeii/MZTimePicker/master/app/src/main/res/drawable/1.PNG" width="250" title="hover text">
